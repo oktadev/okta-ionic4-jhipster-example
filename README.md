@@ -92,6 +92,8 @@ Navigate to **API** > **Authorization Servers**, click the **Authorization Serve
 
 Add another claim, name it `given_name`, include it in the access token, use `Expression` in the value type, and set the value to `user.firstName`. Optionally, include it in the `profile` scope. Perform the same actions to create a `family_name` claim and use expression `user.lastName`.
 
+### Run Your Ionic App
+
 Now you should be able to open another terminal window, navigate to the `mobile` directory, and run the Ionic app.
 
 ```
