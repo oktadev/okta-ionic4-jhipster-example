@@ -21,7 +21,7 @@
     "baseName": "oauth2",
     "authenticationType": "oauth2",
     "buildTool": "gradle",
-    "jhipsterVersion": "6.1.1",
+    "jhipsterVersion": "6.1.2",
     "skipUserManagement": true,
     "clientPackageManager": "npm",
     "applicationType": "monolith",
