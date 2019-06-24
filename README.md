@@ -26,7 +26,7 @@ This will get a copy of the project installed locally.
 
 ### Create an OIDC App on Okta
 
-To begin, sign up for a https://developer.okta.com/signup/[forever-free Okta developer account].
+To begin, sign up for a [forever-free Okta developer account](https://developer.okta.com/signup/).
 
 Once you're signed in to Okta, register your JHipster application.
 
@@ -83,6 +83,14 @@ this.requestor.xhr({method: 'GET', url: AUTH_CONFIG_URI}).then(async (data: any)
   await this.storage.setItem(AUTH_CONFIG_URI, JSON.stringify(this.authConfig));
 }
 ```
+
+### Add Claims to Access Token
+
+In order to authentication successfully with your Ionic app, you have to do a bit more configuration in Okta. Since the Ionic client will only send an access token to JHipster, you need to 1) add a `groups` claim to the access token and 2) add a couple more claims so the user's name will be available in JHipster.
+
+Navigate to **API** > **Authorization Servers**, click the **Authorization Servers** tab and edit the **default** one. Click the **Claims** tab and **Add Claim**. Name it "groups" and include it in the Access Token. Set the value type to "Groups" and set the filter to be a Regex of `.*`. Click **Create**.
+
+Add another claim, name it `given_name`, include it in the access token, use `Expression` in the value type, and set the value to `user.firstName`. Optionally, include it in the `profile` scope. Perform the same actions to create a `family_name` claim and use expression `user.lastName`.
 
 Now you should be able to open another terminal window, navigate to the `mobile` directory, and run the Ionic app.
 
