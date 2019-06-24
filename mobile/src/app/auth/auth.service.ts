@@ -56,7 +56,7 @@ export class AuthService extends IonicAuth {
       // try to get the oauth settings from the server
       this.requestor.xhr({method: 'GET', url: AUTH_CONFIG_URI}).then(async (data: any) => {
         this.authConfig = {
-          identity_client: data.clientId,
+          identity_client: '0oar1o0y1MgwBN5K2356',
           identity_server: data.issuer,
           redirect_url: redirectUri,
           end_session_redirect_url: logoutRedirectUri,
