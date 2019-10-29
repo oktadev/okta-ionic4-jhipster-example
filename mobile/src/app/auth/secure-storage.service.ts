@@ -4,5 +4,4 @@ import { CordovaSecureStorage } from 'ionic-appauth/lib/cordova';
 @Injectable({
   providedIn: 'root'
 })
-export class SecureStorageService extends CordovaSecureStorage{
-}
+export class SecureStorageService extends CordovaSecureStorage {}

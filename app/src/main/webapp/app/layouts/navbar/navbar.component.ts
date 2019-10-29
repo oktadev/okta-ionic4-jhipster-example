@@ -4,7 +4,9 @@ import { JhiLanguageService } from 'ng-jhipster';
 import { SessionStorageService } from 'ngx-webstorage';
 
 import { VERSION } from 'app/app.constants';
-import { JhiLanguageHelper, AccountService, LoginService } from 'app/core';
+import { JhiLanguageHelper } from 'app/core/language/language.helper';
+import { AccountService } from 'app/core/auth/account.service';
+import { LoginService } from 'app/core/login/login.service';
 import { ProfileService } from 'app/layouts/profiles/profile.service';
 
 @Component({
@@ -28,16 +30,14 @@ export class NavbarComponent implements OnInit {
     private profileService: ProfileService,
     private router: Router
   ) {
-    this.version = VERSION ? 'v' + VERSION : '';
+    this.version = VERSION ? (VERSION.toLowerCase().startsWith('v') ? VERSION : 'v' + VERSION) : '';
     this.isNavbarCollapsed = true;
   }
 
   ngOnInit() {
-    this.languageHelper.getAll().then(languages => {
-      this.languages = languages;
-    });
+    this.languages = this.languageHelper.getAll();
 
-    this.profileService.getProfileInfo().then(profileInfo => {
+    this.profileService.getProfileInfo().subscribe(profileInfo => {
       this.inProduction = profileInfo.inProduction;
       this.swaggerEnabled = profileInfo.swaggerEnabled;
     });

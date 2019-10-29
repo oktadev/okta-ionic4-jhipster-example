@@ -1,6 +1,5 @@
 package com.mycompany.myapp.service.mapper;
 
-
 import com.mycompany.myapp.Oauth2App;
 import com.mycompany.myapp.config.TestSecurityConfiguration;
 import com.mycompany.myapp.domain.User;

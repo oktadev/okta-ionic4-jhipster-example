@@ -1,1 +1,1 @@
-application { config { baseName oauth2, authenticationType oauth2,  buildTool gradle, testFrameworks [protractor] }}
+application { config { baseName oauth2, authenticationType oauth2,   buildTool gradle, testFrameworks [protractor] }}

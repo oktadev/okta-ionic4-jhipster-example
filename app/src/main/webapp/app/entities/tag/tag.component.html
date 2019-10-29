@@ -4,22 +4,23 @@
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-tag" [routerLink]="['/tag/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span  jhiTranslate="oauth2App.tag.home.createLabel">
-            Create new Tag
+            Create a new Tag
             </span>
         </button>
     </h2>
+    <jhi-alert-error></jhi-alert-error>
     <jhi-alert></jhi-alert>
     <br/>
     <div class="alert alert-warning" *ngIf="tags?.length === 0">
         <span jhiTranslate="oauth2App.tag.home.notFound">No tags found</span>
     </div>
     <div class="table-responsive" *ngIf="tags?.length > 0">
-        <table class="table table-striped">
+        <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="name"><span jhiTranslate="oauth2App.tag.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th></th>
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="name"><span jhiTranslate="oauth2App.tag.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
             </tr>
             </thead>
             <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
@@ -41,7 +42,7 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', 'tag', { outlets: { popup: tag.id + '/delete'} }]"
+                                [routerLink]="['/tag', { outlets: { popup: tag.id + '/delete'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">

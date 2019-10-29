@@ -21,13 +21,14 @@
             "ownerSide": false
         }
     ],
-    "changelogDate": "20190624165012",
+    "changelogDate": "20191030143046",
     "entityTableName": "tag",
     "dto": "no",
     "pagination": "infinite-scroll",
     "service": "no",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
+    "readOnly": false,
     "clientRootFolder": "",
     "applications": "*"
 }

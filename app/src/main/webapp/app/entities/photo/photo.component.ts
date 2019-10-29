@@ -1,13 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { filter, map } from 'rxjs/operators';
-import { JhiEventManager, JhiParseLinks, JhiAlertService, JhiDataUtils } from 'ng-jhipster';
+import { JhiEventManager, JhiParseLinks, JhiDataUtils } from 'ng-jhipster';
 
 import { IPhoto } from 'app/shared/model/photo.model';
-import { AccountService } from 'app/core';
+import { AccountService } from 'app/core/auth/account.service';
 
-import { ITEMS_PER_PAGE } from 'app/shared';
+import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { PhotoService } from './photo.service';
 
 @Component({
@@ -27,7 +28,6 @@ export class PhotoComponent implements OnInit, OnDestroy {
 
   constructor(
     protected photoService: PhotoService,
-    protected jhiAlertService: JhiAlertService,
     protected dataUtils: JhiDataUtils,
     protected eventManager: JhiEventManager,
     protected parseLinks: JhiParseLinks,
@@ -50,10 +50,7 @@ export class PhotoComponent implements OnInit, OnDestroy {
         size: this.itemsPerPage,
         sort: this.sort()
       })
-      .subscribe(
-        (res: HttpResponse<IPhoto[]>) => this.paginatePhotos(res.body, res.headers),
-        (res: HttpErrorResponse) => this.onError(res.message)
-      );
+      .subscribe((res: HttpResponse<IPhoto[]>) => this.paginatePhotos(res.body, res.headers));
   }
 
   reset() {
@@ -69,7 +66,7 @@ export class PhotoComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadAll();
-    this.accountService.identity().then(account => {
+    this.accountService.identity().subscribe(account => {
       this.currentAccount = account;
     });
     this.registerChangeInPhotos();
@@ -109,9 +106,5 @@ export class PhotoComponent implements OnInit, OnDestroy {
     for (let i = 0; i < data.length; i++) {
       this.photos.push(data[i]);
     }
-  }
-
-  protected onError(errorMessage: string) {
-    this.jhiAlertService.error(errorMessage, null, null);
   }
 }

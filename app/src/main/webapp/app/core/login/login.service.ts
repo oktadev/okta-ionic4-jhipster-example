@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Location } from '@angular/common';
+import { flatMap } from 'rxjs/operators';
 import { AccountService } from 'app/core/auth/account.service';
 import { AuthServerProvider } from 'app/core/auth/auth-session.service';
 
@@ -17,12 +18,14 @@ export class LoginService {
     this.authServerProvider.logout().subscribe(response => {
       const data = response.body;
       let logoutUrl = data.logoutUrl;
+      const redirectUri = `${location.origin}${this.location.prepareExternalUrl('/')}`;
+
       // if Keycloak, uri has protocol/openid-connect/token
       if (logoutUrl.indexOf('/protocol') > -1) {
-        logoutUrl = logoutUrl + '?redirect_uri=' + window.location.origin;
+        logoutUrl = logoutUrl + '?redirect_uri=' + redirectUri;
       } else {
         // Okta
-        logoutUrl = logoutUrl + '?id_token_hint=' + data.idToken + '&post_logout_redirect_uri=' + window.location.origin;
+        logoutUrl = logoutUrl + '?id_token_hint=' + data.idToken + '&post_logout_redirect_uri=' + redirectUri;
       }
       window.location.href = logoutUrl;
     });

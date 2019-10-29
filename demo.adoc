@@ -1,0 +1,186 @@
+:experimental:
+// Define unicode for Apple Command key.
+:commandkey: &#8984;
+
+= Mobile Apps with Angular, Ionic 4, and Spring Boot
+
+This is a demo script with the bare-bones steps you need to https://developer.okta.com/blog/2019/06/24/ionic-4-angular-spring-boot-jhipster[build mobile apps with Angular, Ionic 4, and Spring Boot].
+
+== Create a Spring Boot + Angular App with JHipster
+
+. Install JHipster
+
+  npm i -g generator-jhipster@6.4.1
+
+. Create an app with OIDC authentication
+
+  take app
+
+  jhipster import-jdl --inline \
+    "application {
+       config {
+         baseName oauth2,
+         authenticationType oauth2,
+         buildTool gradle,
+         testFrameworks [protractor]
+       }
+     }"
+
+. Show how you can also run `jhipster` to see all the options
+
+. Run Keycloak with Docker Compose [`jhkeycloakup`]
+
+  docker-compose -f src/main/docker/keycloak.yml up -d
+
+. Start the application with `./gradlew`
+
+. Run the running app via Protractor tests with npm
+
+  npm run e2e
+
+. Upgrade webdriver-manager to work with latest version of Chrome
+
+== Configure JHipster to use Okta
+
+. Create a web app on Okta, use `http://localhost:8080/login/oauth2/code/oidc` for redirect URI
+
+. Add `http://localhost:8080` as a logout redirect URI
+
+. Explain JHipster's default `ROLE_USER` and `ROLE_ADMIN` groups
+
+. Add a `groups` claim to the ID token
+
+. Start your app using your Okta app's OIDC settings
+
+  SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER_URI=https://{yourOktaDomain}/oauth2/default \
+    SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID=$clientId \
+    SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET=$clientSecret ./gradlew
+
+. Show how you can now log in with Okta
+
+== Create a Native App for Ionic
+
+. Create a new Native application in Okta
+
+. Add login redirect URIs
+
+  http://localhost:8100/implicit/callback
+  dev.localhost.ionic:/callback
+
+. Add logout redirect URIs
+
+  http://localhost:8100/implicit/logout
+  dev.localhost.ionic:/logout
+
+. Add claims to access token (`groups`, `given_name`, and `family_name`)
+
+== Generate Entities for a Photo Gallery
+
+. Copy the JDL below and save it as `photos.jdl`
+
+.`photos.jdl`
+[%collapsible]
+====
+[source]
+----
+entity Album {
+  title String required,
+  description TextBlob,
+  created Instant
+}
+
+entity Photo {
+  title String required,
+  description TextBlob,
+  image ImageBlob required,
+  taken Instant
+}
+
+entity Tag {
+  name String required minlength(2)
+}
+
+relationship ManyToOne {
+  Album{user(login)} to User,
+  Photo{album(title)} to Album
+}
+
+relationship ManyToMany {
+  Photo{tag(name)} to Tag{photo}
+}
+
+paginate Album with pagination
+paginate Photo, Tag with infinite-scroll
+----
+====
+[start=2]
+
+. Generate entities and CRUD code
+
+  jhipster import-jdl photos.jdl
+
+. Show generated pages and how you can turn off faker in `application-dev.yml`
+
+== Generate an Ionic 4 Mobile App
+
+. Install Ionic CLI, Cordova, Ionic for JHipster, and Yeoman
+
+  npm i -g ionic@5.4.4 cordova@9.0.0 generator-jhipster-ionic@4.2.0 yo
+
+. Create an Ionic 4 app
+
+  ionic4j
+
+. Change `auth.service.ts` to use the client ID from your Okta Native app
+
+. Start the app using `ionic serve` and show log in
+
+. Generate screens for your entities
+
+  ionic4j import-jdl ../app/photos.jdl
+
+. Refresh the Ionic app and add a new album, show how it shows up in JHipster too
+
+== Run on iOS
+
+. Generate an iOS project for your Ionic app
+
+  ionic cordova prepare ios
+
+. Configure code signing, then run in Simulator
+
+. Log in, tap **Entities**, then view list of photos
+
+. Add a new photo in the JHipster app at `http://localhost:8080`
+
+. Pull-to-refresh on photos screen in Simulator
+
+. Mention click to view and swipe to edit and delete
+
+== Run on Android
+
+. Make sure you're using Java 8
+
+  java -version
+
+. Create a native app for Android
+
+  ionic cordova prepare android
+
+. Open `platforms/android` in Android Studio, upgrade Gradle if prompted
+
+. Set `launchMode` to `singleTask` in `AndroidManifest.xml`
+
+. Start your app using Android Studio
+
+. Run the following command so the emulator can talk to JHipster
+
+  adb reverse tcp:8080 tcp:8080
+
+. Fini! 🤓
+
+== Learn More!
+
+. GitHub repo: https://github.com/oktadeveloper/okta-ionic4-jhipster-example
+
+. Blog post: https://developer.okta.com/blog/2019/06/24/ionic-4-angular-spring-boot-jhipster

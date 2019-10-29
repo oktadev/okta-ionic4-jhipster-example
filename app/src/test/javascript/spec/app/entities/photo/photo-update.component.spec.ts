@@ -1,8 +1,7 @@
-/* tslint:disable max-line-length */
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { HttpResponse } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
-import { Observable, of } from 'rxjs';
+import { of } from 'rxjs';
 
 import { Oauth2TestModule } from '../../../test.module';
 import { PhotoUpdateComponent } from 'app/entities/photo/photo-update.component';

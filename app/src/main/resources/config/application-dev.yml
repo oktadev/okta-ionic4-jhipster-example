@@ -57,7 +57,7 @@ spring:
       hibernate.cache.use_query_cache: false
       hibernate.generate_statistics: false
   liquibase:
-    # Add 'faker' if you want the sample data to be loaded automatically
+    # Remove 'faker' if you do not want the sample data to be loaded automatically
     contexts: dev
   mail:
     host: localhost
@@ -92,7 +92,6 @@ jhipster:
     allow-credentials: true
     max-age: 1800
   mail: # specific JHipster mail property, for standard properties see MailProperties
-    from: oauth2@localhost
     base-url: http://127.0.0.1:8080
   metrics:
     logs: # Reports metrics in the logs
@@ -105,6 +104,9 @@ jhipster:
       host: localhost
       port: 5000
       queue-size: 512
+  audit-events:
+    retention-period: 30 # Number of days before audit events are deleted.
+
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class

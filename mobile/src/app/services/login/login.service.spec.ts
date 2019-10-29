@@ -6,9 +6,11 @@ import { TranslateModule } from '@ngx-translate/core';
 import { IonicStorageModule } from '@ionic/storage';
 
 describe('LoginService', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [HttpClientTestingModule, NgxWebstorageModule.forRoot(), TranslateModule.forRoot(), IonicStorageModule.forRoot()]
-  }));
+  beforeEach(() =>
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule, NgxWebstorageModule.forRoot(), TranslateModule.forRoot(), IonicStorageModule.forRoot()]
+    })
+  );
 
   it('should be created', () => {
     const service: LoginService = TestBed.get(LoginService);

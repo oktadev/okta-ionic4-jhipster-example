@@ -1,34 +1,18 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { JhiLanguageService } from 'ng-jhipster';
-import { JhiLanguageHelper } from 'app/core';
 
-import { Oauth2SharedModule } from 'app/shared';
-import {
-  AlbumComponent,
-  AlbumDetailComponent,
-  AlbumUpdateComponent,
-  AlbumDeletePopupComponent,
-  AlbumDeleteDialogComponent,
-  albumRoute,
-  albumPopupRoute
-} from './';
+import { Oauth2SharedModule } from 'app/shared/shared.module';
+import { AlbumComponent } from './album.component';
+import { AlbumDetailComponent } from './album-detail.component';
+import { AlbumUpdateComponent } from './album-update.component';
+import { AlbumDeletePopupComponent, AlbumDeleteDialogComponent } from './album-delete-dialog.component';
+import { albumRoute, albumPopupRoute } from './album.route';
 
 const ENTITY_STATES = [...albumRoute, ...albumPopupRoute];
 
 @NgModule({
   imports: [Oauth2SharedModule, RouterModule.forChild(ENTITY_STATES)],
   declarations: [AlbumComponent, AlbumDetailComponent, AlbumUpdateComponent, AlbumDeleteDialogComponent, AlbumDeletePopupComponent],
-  entryComponents: [AlbumComponent, AlbumUpdateComponent, AlbumDeleteDialogComponent, AlbumDeletePopupComponent],
-  providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  entryComponents: [AlbumDeleteDialogComponent]
 })
-export class Oauth2AlbumModule {
-  constructor(private languageService: JhiLanguageService, private languageHelper: JhiLanguageHelper) {
-    this.languageHelper.language.subscribe((languageKey: string) => {
-      if (languageKey !== undefined) {
-        this.languageService.changeLanguage(languageKey);
-      }
-    });
-  }
-}
+export class Oauth2AlbumModule {}

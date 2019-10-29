@@ -1,34 +1,18 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { JhiLanguageService } from 'ng-jhipster';
-import { JhiLanguageHelper } from 'app/core';
 
-import { Oauth2SharedModule } from 'app/shared';
-import {
-  PhotoComponent,
-  PhotoDetailComponent,
-  PhotoUpdateComponent,
-  PhotoDeletePopupComponent,
-  PhotoDeleteDialogComponent,
-  photoRoute,
-  photoPopupRoute
-} from './';
+import { Oauth2SharedModule } from 'app/shared/shared.module';
+import { PhotoComponent } from './photo.component';
+import { PhotoDetailComponent } from './photo-detail.component';
+import { PhotoUpdateComponent } from './photo-update.component';
+import { PhotoDeletePopupComponent, PhotoDeleteDialogComponent } from './photo-delete-dialog.component';
+import { photoRoute, photoPopupRoute } from './photo.route';
 
 const ENTITY_STATES = [...photoRoute, ...photoPopupRoute];
 
 @NgModule({
   imports: [Oauth2SharedModule, RouterModule.forChild(ENTITY_STATES)],
   declarations: [PhotoComponent, PhotoDetailComponent, PhotoUpdateComponent, PhotoDeleteDialogComponent, PhotoDeletePopupComponent],
-  entryComponents: [PhotoComponent, PhotoUpdateComponent, PhotoDeleteDialogComponent, PhotoDeletePopupComponent],
-  providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  entryComponents: [PhotoDeleteDialogComponent]
 })
-export class Oauth2PhotoModule {
-  constructor(private languageService: JhiLanguageService, private languageHelper: JhiLanguageHelper) {
-    this.languageHelper.language.subscribe((languageKey: string) => {
-      if (languageKey !== undefined) {
-        this.languageService.changeLanguage(languageKey);
-      }
-    });
-  }
-}
+export class Oauth2PhotoModule {}
