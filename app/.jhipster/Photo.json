@@ -43,13 +43,14 @@
             "ownerSide": true
         }
     ],
-    "changelogDate": "20190624165011",
+    "changelogDate": "20191030143045",
     "entityTableName": "photo",
     "dto": "no",
     "pagination": "infinite-scroll",
     "service": "no",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
+    "readOnly": false,
     "clientRootFolder": "",
     "applications": "*"
 }

@@ -10,17 +10,10 @@ import { RequestorService } from './requestor.service';
   providedIn: 'root'
 })
 export class AuthHttpService {
-
   requestor: Requestor;
 
-  constructor(
-    angularRequestor: RequestorService,
-    cordovaRequestor: CordovaRequestor,
-    platform: Platform,
-    private auth: AuthService
-  ) {
+  constructor(angularRequestor: RequestorService, cordovaRequestor: CordovaRequestor, platform: Platform, private auth: AuthService) {
     this.requestor = platform.is('cordova') ? cordovaRequestor : angularRequestor;
-
   }
 
   public async request<T>(method: 'GET' | 'POST' | 'PUT' | 'DELETE', url: string, body?: any) {
@@ -34,10 +27,11 @@ export class AuthHttpService {
   }
 
   private addHeaders(token) {
-    return (token) ? {
-      'Authorization': `${token.tokenType} ${token.accessToken}`,
-      'Content-Type': 'application/json'
-    } : {};
-
+    return token
+      ? {
+          Authorization: `${token.tokenType} ${token.accessToken}`,
+          'Content-Type': 'application/json'
+        }
+      : {};
   }
 }

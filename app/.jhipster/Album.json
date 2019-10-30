@@ -27,13 +27,14 @@
             "otherEntityField": "login"
         }
     ],
-    "changelogDate": "20190624165010",
+    "changelogDate": "20191030143044",
     "entityTableName": "album",
     "dto": "no",
     "pagination": "pagination",
     "service": "no",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
+    "readOnly": false,
     "clientRootFolder": "",
     "applications": "*"
 }

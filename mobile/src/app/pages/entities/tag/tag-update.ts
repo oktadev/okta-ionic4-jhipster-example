@@ -29,7 +29,7 @@ export class TagUpdatePage implements OnInit {
         protected activatedRoute: ActivatedRoute,
         protected navController: NavController,
         protected formBuilder: FormBuilder,
-        protected platform: Platform,
+        public platform: Platform,
         protected toastCtrl: ToastController,
         private photoService: PhotoService,
         private tagService: TagService

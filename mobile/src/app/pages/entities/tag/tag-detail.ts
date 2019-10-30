@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
     templateUrl: 'tag-detail.html'
 })
 export class TagDetailPage implements OnInit {
-    tag: Tag;
+    tag: Tag = {};
 
     constructor(
         private navController: NavController,

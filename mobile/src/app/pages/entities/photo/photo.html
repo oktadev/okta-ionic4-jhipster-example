@@ -10,7 +10,7 @@
 </ion-header>
 
 <!-- todo: add elasticsearch support -->
-<ion-content padding>
+<ion-content class="ion-padding">
     <ion-refresher [disabled]="plt.is('desktop')" slot="fixed" (ionRefresh)="loadAll($event)">
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
@@ -23,7 +23,6 @@
                 <p>{{photo.description}}</p>
                 <ion-avatar *ngIf="photo.image">
                     <img [src]="'data:' + photo.imageContentType + ';base64,' + photo.image" />
-                    <p *ngIf="photo.image">{{photo.imageContentType}}, {{byteSize(photo.image)}}</p>
                 </ion-avatar>
                 <p>{{photo.taken | date:'medium'}}</p>
               </ion-label>

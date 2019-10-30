@@ -21,18 +21,21 @@
     "baseName": "oauth2",
     "authenticationType": "oauth2",
     "buildTool": "gradle",
-    "jhipsterVersion": "6.1.2",
+    "jhipsterVersion": "6.4.1",
     "skipUserManagement": true,
     "clientPackageManager": "npm",
     "applicationType": "monolith",
     "cacheProvider": "ehcache",
     "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
     "serverPort": "8080",
     "useSass": true,
-    "clientTheme": "none",
+    "embeddableLaunchScript": false,
     "entitySuffix": "",
     "dtoSuffix": "DTO",
-    "otherModules": []
+    "otherModules": [],
+    "blueprints": []
   },
   "entities": []
 }

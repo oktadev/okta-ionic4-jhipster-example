@@ -4,7 +4,7 @@
 
 = Mobile Apps with Angular, Ionic 4, and Spring Boot
 
-The brackets at the end of each step indicate the alias's or IntelliJ Live Templates to use. You can find the template definitions at https://github.com/mraible/idea-live-templates[mraible/idea-live-templates].
+This is a demo script with the bare-bones steps you need to https://developer.okta.com/blog/2019/06/24/ionic-4-angular-spring-boot-jhipster[build mobile apps with Angular, Ionic 4, and Spring Boot].
 
 == Create a Spring Boot + Angular App with JHipster
 
@@ -38,6 +38,8 @@ The brackets at the end of each step indicate the alias's or IntelliJ Live Templ
 
   npm run e2e
 
+. Upgrade webdriver-manager to work with latest version of Chrome
+
 == Configure JHipster to use Okta
 
 . Create a web app on Okta, use `http://localhost:8080/login/oauth2/code/oidc` for redirect URI
@@ -70,7 +72,7 @@ The brackets at the end of each step indicate the alias's or IntelliJ Live Templ
   http://localhost:8100/implicit/logout
   dev.localhost.ionic:/logout
 
-. Add claims to access token (`groups, `given_name`, and `family_name`)
+. Add claims to access token (`groups`, `given_name`, and `family_name`)
 
 == Generate Entities for a Photo Gallery
 
@@ -121,9 +123,9 @@ paginate Photo, Tag with infinite-scroll
 
 == Generate an Ionic 4 Mobile App
 
-. Install Ionic CLI, Ionic for JHipster, and Yeoman
+. Install Ionic CLI, Cordova, Ionic for JHipster, and Yeoman
 
-  npm i -g ionic@5.4.4 generator-jhipster-ionic@4.2.0 yo
+  npm i -g ionic@5.4.4 cordova@9.0.0 generator-jhipster-ionic@4.2.0 yo
 
 . Create an Ionic 4 app
 
@@ -175,7 +177,7 @@ paginate Photo, Tag with infinite-scroll
 
   adb reverse tcp:8080 tcp:8080
 
-. Finito! 🤓
+. Fini! 🤓
 
 == Learn More!
 

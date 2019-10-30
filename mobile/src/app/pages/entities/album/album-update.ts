@@ -35,7 +35,7 @@ export class AlbumUpdatePage implements OnInit {
         protected activatedRoute: ActivatedRoute,
         protected navController: NavController,
         protected formBuilder: FormBuilder,
-        protected platform: Platform,
+        public platform: Platform,
         protected toastCtrl: ToastController,
         private dataUtils: JhiDataUtils,
         private userService: UserService,

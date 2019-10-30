@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { LoginService, AccountService, Account } from 'app/core';
+import { LoginService } from 'app/core/login/login.service';
+import { AccountService } from 'app/core/auth/account.service';
+import { Account } from 'app/core/user/account.model';
 
 @Component({
   selector: 'jhi-home',
@@ -13,7 +15,7 @@ export class HomeComponent implements OnInit {
   constructor(private accountService: AccountService, private loginService: LoginService) {}
 
   ngOnInit() {
-    this.accountService.identity().then((account: Account) => {
+    this.accountService.identity().subscribe((account: Account) => {
       this.account = account;
     });
   }

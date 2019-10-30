@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
     templateUrl: 'photo-detail.html'
 })
 export class PhotoDetailPage implements OnInit {
-    photo: Photo;
+    photo: Photo = {};
 
     constructor(
         private dataUtils: JhiDataUtils,

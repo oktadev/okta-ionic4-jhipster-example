@@ -8,16 +8,7 @@ import { StorageService } from './storage.service';
 import { RequestorService } from './requestor.service';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  providers: [
-    RequestorService,
-    StorageService,
-    AuthGuardService,
-    AuthHttpService,
-    AuthService
-  ]
+  imports: [CommonModule],
+  providers: [RequestorService, StorageService, AuthGuardService, AuthHttpService, AuthService]
 })
-export class AuthModule {
-}
+export class AuthModule {}

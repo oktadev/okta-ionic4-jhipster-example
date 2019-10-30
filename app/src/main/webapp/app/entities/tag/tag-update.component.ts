@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -8,7 +10,7 @@ import { JhiAlertService } from 'ng-jhipster';
 import { ITag, Tag } from 'app/shared/model/tag.model';
 import { TagService } from './tag.service';
 import { IPhoto } from 'app/shared/model/photo.model';
-import { PhotoService } from 'app/entities/photo';
+import { PhotoService } from 'app/entities/photo/photo.service';
 
 @Component({
   selector: 'jhi-tag-update',
@@ -95,7 +97,7 @@ export class TagUpdateComponent implements OnInit {
     return item.id;
   }
 
-  getSelected(selectedVals: Array<any>, option: any) {
+  getSelected(selectedVals: any[], option: any) {
     if (selectedVals) {
       for (let i = 0; i < selectedVals.length; i++) {
         if (option.id === selectedVals[i].id) {

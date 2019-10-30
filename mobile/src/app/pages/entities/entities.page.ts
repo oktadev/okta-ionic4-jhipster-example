@@ -19,5 +19,4 @@ export class EntitiesPage {
   openPage(page) {
     this.navController.navigateForward('/tabs/entities/' + page.route);
   }
-
 }

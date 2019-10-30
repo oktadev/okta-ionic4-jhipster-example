@@ -20,7 +20,7 @@ export class PhotoUpdatePage implements OnInit {
     photo: Photo;
     albums: Album[];
     tags: Tag[];
-    @ViewChild('fileInput') fileInput;
+    @ViewChild('fileInput', {static: false}) fileInput;
     cameraOptions: CameraOptions;
     taken: string;
     isSaving = false;
@@ -42,7 +42,7 @@ export class PhotoUpdatePage implements OnInit {
         protected activatedRoute: ActivatedRoute,
         protected navController: NavController,
         protected formBuilder: FormBuilder,
-        protected platform: Platform,
+        public platform: Platform,
         protected toastCtrl: ToastController,
         private dataUtils: JhiDataUtils,
 

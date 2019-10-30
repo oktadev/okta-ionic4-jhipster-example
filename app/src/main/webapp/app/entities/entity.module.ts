@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -6,22 +6,18 @@ import { RouterModule } from '@angular/router';
     RouterModule.forChild([
       {
         path: 'album',
-        loadChildren: './album/album.module#Oauth2AlbumModule'
+        loadChildren: () => import('./album/album.module').then(m => m.Oauth2AlbumModule)
       },
       {
         path: 'photo',
-        loadChildren: './photo/photo.module#Oauth2PhotoModule'
+        loadChildren: () => import('./photo/photo.module').then(m => m.Oauth2PhotoModule)
       },
       {
         path: 'tag',
-        loadChildren: './tag/tag.module#Oauth2TagModule'
+        loadChildren: () => import('./tag/tag.module').then(m => m.Oauth2TagModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])
-  ],
-  declarations: [],
-  entryComponents: [],
-  providers: [],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  ]
 })
 export class Oauth2EntityModule {}

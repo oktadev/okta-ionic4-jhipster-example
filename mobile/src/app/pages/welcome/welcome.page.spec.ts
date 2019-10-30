@@ -16,7 +16,13 @@ describe('WelcomePage', () => {
     TestBed.configureTestingModule({
       declarations: [WelcomePage],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [TranslateModule.forRoot(), NgxWebstorageModule.forRoot(), HttpClientTestingModule, IonicStorageModule.forRoot(), RouterTestingModule]
+      imports: [
+        TranslateModule.forRoot(),
+        NgxWebstorageModule.forRoot(),
+        HttpClientTestingModule,
+        IonicStorageModule.forRoot(),
+        RouterTestingModule
+      ]
     }).compileComponents();
   }));
 

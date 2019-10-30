@@ -6,9 +6,7 @@ import { Storage } from '@ionic/storage';
   providedIn: 'root'
 })
 export class StorageService implements StorageBackend {
-
-  constructor(private storage: Storage) {
-  }
+  constructor(private storage: Storage) {}
 
   getItem(name: string): Promise<string> {
     return this.storage.get(name);
