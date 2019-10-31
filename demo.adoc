@@ -125,7 +125,7 @@ paginate Photo, Tag with infinite-scroll
 
 . Install Ionic CLI, Cordova, Ionic for JHipster, and Yeoman
 
-  npm i -g ionic@5.4.4 cordova@9.0.0 generator-jhipster-ionic@4.2.0 yo
+  npm i -g ionic@5.4.4 cordova@9.0.0 generator-jhipster-ionic@4.3.1 yo
 
 . Create an Ionic 4 app
 
