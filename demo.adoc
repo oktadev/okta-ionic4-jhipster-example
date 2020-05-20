@@ -64,12 +64,12 @@ This is a demo script with the bare-bones steps you need to https://developer.ok
 
 . Add login redirect URIs
 
-  http://localhost:8100/implicit/callback
+  http://localhost:8100/callback
   dev.localhost.ionic:/callback
 
 . Add logout redirect URIs
 
-  http://localhost:8100/implicit/logout
+  http://localhost:8100/logout
   dev.localhost.ionic:/logout
 
 . Add claims to access token (`groups`, `given_name`, and `family_name`)
