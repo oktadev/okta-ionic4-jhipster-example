@@ -64,8 +64,8 @@ You'll also need to create a Native app for Ionic.
 * Click on **Add Application**
 * Select **Native** and click **Next**
 * Enter `Ionic FTW!` for the Name
-* Add Login redirect URIs: `http://localhost:8100/implicit/callback` and `dev.localhost.ionic:/callback`
-* Click **Done**, then **Edit** and add Logout redirect URIs: `http://localhost:8100/implicit/logout` and `dev.localhost.ionic:/logout`
+* Add Login redirect URIs: `http://localhost:8100/callback` and `dev.localhost.ionic:/callback`
+* Click **Done**, then **Edit** and add Logout redirect URIs: `http://localhost:8100/logout` and `dev.localhost.ionic:/logout`
 * Click **Save**
 
 After performing these steps, copy your `clientId` into [`src/app/auth/auth.service.ts`](https://github.com/oktadeveloper/okta-ionic4-jhipster-example/blob/master/mobile/src/app/auth/auth.service.ts#L59).
